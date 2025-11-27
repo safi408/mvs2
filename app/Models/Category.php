@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Category extends Model
+{
+    //
+    
+        protected $fillable = ['name', 'slug', 'description','image',];
+
+    public function subcategories()
+    {
+        return $this->hasMany(SubCategory::class);
+    }
+
+    public function childcategory(){
+        return $this->hasMany(Childcategory::class);
+    }
+        // One Category has many Products
+    public function products()
+    {
+        return $this->hasMany(VendorProduct::class);
+    }
+}
